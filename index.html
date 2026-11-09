@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#5267d8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="رتّبها صح" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="description" content="تطبيق رتّبها صح لتعلّم ومراجعة اللغة الإنجليزية للصف الثالث الأساسي." />
+  <title>رتّبها صح | الصف الثالث – الوحدات الأولى إلى التاسعة</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="رتّبها صح - الصفحة الرئيسية">
+        <span class="brand-mark" aria-hidden="true">🦉</span>
+        <span>
+          <strong>رتّبها صح</strong>
+          <small>Arrange It Right</small>
+        </span>
+      </a>
+      <div class="top-meta">
+        <span class="grade-pill">الصف الثالث الأساسي</span>
+        <span class="unit-pill" id="unit-pill">English · Unit 1: All About Me</span>
+        <div class="unit-switch" role="group" aria-label="اختيار الوحدة">
+          <button class="unit-switch-button active-unit" type="button" data-action="unit" data-unit="1">الوحدة 1</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="2">الوحدة 2</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="3">الوحدة 3</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="4">الوحدة 4</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="5">الوحدة 5 · مراجعة</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="6">الوحدة 6 · الصحة</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="7">الوحدة 7 · يومي</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="8">الوحدة 8 · الطقس</button>
+          <button class="unit-switch-button" type="button" data-action="unit" data-unit="9">الوحدة 9 · مراجعة</button>
+        </div>
+        <button id="install-app" class="install-button" type="button" hidden>⬇ تثبيت التطبيق</button>
+      </div>
+    </header>
+
+    <main id="top" class="main-layout">
+      <aside class="sidebar" aria-label="معلومات الوحدة والتقدم">
+        <section class="side-card welcome-card">
+          <div class="lulu">🦉</div>
+          <div>
+            <p class="eyebrow">مرشدتك لولو</p>
+            <h1>أهلًا بالمبدع الصغير!</h1>
+            <p class="muted">هيا نرتّب الكلمات ونكوّن جملًا باللغة الإنجليزية.</p>
+          </div>
+        </section>
+
+        <section class="side-card progress-card">
+          <div class="section-heading">
+            <h2>تقدمك في الوحدة</h2>
+            <span id="progress-percent" class="percent">0%</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="نسبة إنجاز الوحدة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
+            <span id="progress-fill"></span>
+          </div>
+          <div class="stats-grid">
+            <div class="stat"><strong id="completed-count">0/12</strong><span>أنشطة مكتملة</span></div>
+            <div class="stat"><strong id="total-points">0</strong><span>نقاطك</span></div>
+          </div>
+          <div class="streak-note">⭐ كل محاولة فرصة جديدة للتعلّم!</div>
+        </section>
+
+        <section class="side-card activity-list-card">
+          <div class="section-heading">
+            <h2>أنشطة الوحدة</h2>
+            <span class="tiny-count" id="list-count">12 نشاطًا</span>
+          </div>
+          <nav id="activity-nav" class="activity-nav" aria-label="التنقل بين الأنشطة"></nav>
+        </section>
+
+        <button id="reset-progress" class="reset-button" type="button">إعادة ضبط التقدم</button>
+      </aside>
+
+      <section class="workspace" aria-live="polite">
+        <div id="exercise-view"></div>
+        <details class="teacher-panel" id="teacher-panel">
+          <summary>معلومات للمعلم / المعلمة</summary>
+          <div id="teacher-content" class="teacher-content"></div>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>رتّبها صح – تعلّم، جرّب، وتقدّم</span>
+      <span>يُحفظ التقدم على هذا الجهاز فقط</span>
+      <span id="network-status" class="network-status" role="status" aria-live="polite" hidden>أنت دون اتصال؛ يمكنك متابعة التعلم.</span>
+    </footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
